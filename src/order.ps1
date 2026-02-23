@@ -1,3 +1,3 @@
-function Send-Order($pizzaName) {
+function Submit-Order($pizzaName) {
     Write-Output "Ordering $pizzaName pizza"
 }

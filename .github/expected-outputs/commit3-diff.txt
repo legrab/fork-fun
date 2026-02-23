@@ -1,0 +1,15 @@
+diff --git a/src/main.ps1 b/src/main.ps1
+index 3ac6d78..70c025c 100644
+--- a/src/main.ps1
++++ b/src/main.ps1
+@@ -1,4 +1,8 @@
+-$pizza = @{ Name = "some" }
++function Get-Pizza() {
++    return @{ Name = "some" }
++}
++
++$pizza = Get-Pizza;
+ 
+ . ./order.ps1
+-Submit-Order $pizza.Name
++Submit-Order $pizzaName

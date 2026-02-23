@@ -1,0 +1,11 @@
+diff --git a/src/main.ps1 b/src/main.ps1
+index 70c025c..ded5ca3 100644
+--- a/src/main.ps1
++++ b/src/main.ps1
+@@ -1,5 +1,5 @@
+ function Get-Pizza() {
+-    return @{ Name = "some" }
++    return @{ Name = "Margherita" }
+ }
+ 
+ $pizza = Get-Pizza;

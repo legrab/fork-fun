@@ -1,0 +1,10 @@
+diff --git a/src/main.ps1 b/src/main.ps1
+index ab974b5..3ac6d78 100644
+--- a/src/main.ps1
++++ b/src/main.ps1
+@@ -1 +1,4 @@
+-Write-Output "Ordering some pizza"
++$pizza = @{ Name = "some" }
++
++. ./order.ps1
++Submit-Order $pizza.Name

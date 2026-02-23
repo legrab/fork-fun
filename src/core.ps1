@@ -1,7 +1,7 @@
 # Select a pizza to order
 
 function Get-Pizza() {
-    return @{ Name = "some" }
+    return @{ Name = "Margherita" }
 }
 
 $pizza = Get-Pizza;

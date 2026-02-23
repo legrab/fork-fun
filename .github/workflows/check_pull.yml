@@ -1,0 +1,46 @@
+name: PR validation
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-slim
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+   
+      - name: Validate commit structure and file changes
+        run: |
+          COMMITS=$(git rev-list origin/main..HEAD)
+
+          EXPECTED_COMMITS=(
+            "{\"title\":\"feat(order): implement Submit-Order\",\"files\":[\"src/order.ps1\"]}"
+            "{\"title\":\"chore(main): call Submit-Order with custom pizza\",\"files\":[\"src/main.ps1\"]}"
+            "{\"title\":\"refact(main): extract Get-Pizza\",\"files\":[\"src/main.ps1\"]}"
+            "{\"title\":\"chore(main): order my pizza\",\"files\":[\"src/main.ps1\"]}"
+          )
+
+          i=0
+          for COMMIT in $COMMITS; do
+            TITLE=$(git log -1 --pretty=%s $COMMIT)
+            FILES=$(git diff-tree --no-commit-id --name-only -r $COMMIT | jq -R . | jq -s .)
+
+            EXPECTED_TITLE=$(echo ${EXPECTED_COMMITS[$i]} | jq -r .title)
+            EXPECTED_FILES=$(echo ${EXPECTED_COMMITS[$i]} | jq -r .files | jq -s .)
+
+            if [ "$TITLE" != "$EXPECTED_TITLE" ]; then
+              echo "Unexpected commit title: $TITLE"
+              exit 1
+            fi
+
+            if [ "$FILES" != "$EXPECTED_FILES" ]; then
+              echo "Unexpected files changed in commit $TITLE: $FILES"
+              exit 1
+            fi
+
+            i=$((i+1))
+          done

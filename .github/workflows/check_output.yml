@@ -1,0 +1,30 @@
+name: Output validation
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches:
+      - main
+jobs:
+  validate:
+    runs-on: ubuntu-slim
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Execute PowerShell script
+        id: runscript
+        run: |
+          OUTPUT=$(pwsh ./src/main.ps1)
+          echo "output=$OUTPUT" >> $GITHUB_OUTPUT
+
+      - name: Validate output
+        run: |
+          OUTPUT="${{ steps.runscript.outputs.output }}"
+          if [[ ! "$OUTPUT" =~ ^Ordering[[:space:]]+[A-Za-z]+[[:space:]]+pizza$ ]]; then
+            echo "Output invalid: $OUTPUT"
+            exit 1
+          fi

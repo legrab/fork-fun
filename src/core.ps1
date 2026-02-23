@@ -1,3 +1,6 @@
 # Select a pizza to order
 
-Write-Output "Ordering some pizza"
+$pizza = @{ Name = "some" }
+
+. ./src/order.ps1
+Submit-Order $pizza.Name

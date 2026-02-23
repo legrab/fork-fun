@@ -25,9 +25,9 @@ jobs:
 
           # Define expected structure and outputs (in reverse order as shown by git log)
           EXPECTED_COMMITS=(
-            "{\"title\":\"chore(main): order my pizza\",\"file\":\"src/main.ps1\",\"diff\":\".github/expected-outputs/commit4-diff.txt\"}"
-            "{\"title\":\"refact(main): extract Get-Pizza\",\"file\":\"src/main.ps1\",\"diff\":\".github/expected-outputs/commit3-diff.txt\"}"
-            "{\"title\":\"chore(main): call Submit-Order with custom pizza\",\"file\":\"src/main.ps1\",\"diff\":\".github/expected-outputs/commit2-diff.txt\"}"
+            "{\"title\":\"chore(core): order my pizza\",\"file\":\"src/core.ps1\",\"diff\":\".github/expected-outputs/commit4-diff.txt\"}"
+            "{\"title\":\"refact(core): extract Get-Pizza\",\"file\":\"src/core.ps1\",\"diff\":\".github/expected-outputs/commit3-diff.txt\"}"
+            "{\"title\":\"chore(core): call Submit-Order with custom pizza\",\"file\":\"src/core.ps1\",\"diff\":\".github/expected-outputs/commit2-diff.txt\"}"
             "{\"title\":\"feat(order): implement Submit-Order\",\"file\":\"src/order.ps1\",\"diff\":\".github/expected-outputs/commit1-diff.txt\"}"
           )
 

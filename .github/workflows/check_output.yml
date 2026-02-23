@@ -18,7 +18,7 @@ jobs:
       - name: Execute PowerShell script
         id: runscript
         run: |
-          OUTPUT=$(pwsh ./src/main.ps1)
+          OUTPUT=$(pwsh ./src/core.ps1)
           echo "output=$OUTPUT" >> $GITHUB_OUTPUT
 
       - name: Validate output

@@ -5,4 +5,4 @@ function Get-Pizza() {
 $pizza = Get-Pizza;
 
 . ./src/order.ps1
-Submit-Order $pizza.Name
+Submit-Order $pizzaName

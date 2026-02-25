@@ -1,3 +1,10 @@
 # Select a pizza to order
 
-Write-Output "Ordering some pizza"
+function Get-Pizza() {
+    return @{ Name = "Diavolo" }
+}
+
+$pizza = Get-Pizza;
+
+. ./src/order.ps1
+Submit-Order $pizza.Name

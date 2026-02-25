@@ -1,5 +1,5 @@
 function Get-Pizza() {
-    return @{ Name = "some" }
+    return @{ Name = "Burrata" }
 }
 
 $pizza = Get-Pizza;
